@@ -10,9 +10,7 @@ import (
 func main() {
 	/*
 		Here's what we need to do
-		* Make this effective CLI first
-		* Then make this http handy
-		* Then build unit tests
+		* Build unit tests
 		* Then deploy this via lambda
 		* then set up with API gateway if need endpoint
 	*/
