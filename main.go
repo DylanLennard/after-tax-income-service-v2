@@ -1,8 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/DylanLennard/after-tax-service-v2/service"
+	"github.com/julienschmidt/httprouter"
+	"net/http"
+	"log"
 )
 
 func main() {
@@ -14,5 +16,13 @@ func main() {
 		* Then deploy this via lambda
 		* then set up with API gateway if need endpoint
 	*/
-	fmt.Println(service.AfterTaxIncome(90000, true))
+	// setup the router
+	r := httprouter.New()
+
+	// assign routes 
+	r.GET("/", service.HelloWorld)
+	r.GET("/after_tax_income", service.AfterTaxIncome)
+
+	// start server and have router use defaultservermux
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
