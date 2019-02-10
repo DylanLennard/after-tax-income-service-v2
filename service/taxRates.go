@@ -1,5 +1,10 @@
 package service
 
+// This file exists in the mean time while we do not have 
+// full state data or any sort of formal data store  
+// next step may be to create a JSON file with all of this info in it
+// and access it dynamically via another parameter  
+// but for now, this will do  
 
 import "github.com/DylanLennard/after-tax-income-service-v2/model"
 
