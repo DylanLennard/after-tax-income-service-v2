@@ -11,8 +11,8 @@ func main() {
 	/*
 		Here's what we need to do
 		* Build unit tests
-		* Then deploy this via lambda
-		* then set up with API gateway if need endpoint
+		* deploy this via lambda
+		* set up with API gateway if need endpoint
 	*/
 	// setup the router
 	r := httprouter.New()
