@@ -1,7 +1,7 @@
 package service
 
 
-import "github.com/DylanLennard/after-tax-service-v2/model"
+import "github.com/DylanLennard/after-tax-income-service-v2/model"
 
 var StateTaxes model.Taxes = model.Taxes{
 	Name: "State", 

@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"github.com/DylanLennard/after-tax-service-v2/helpers"
+	"github.com/DylanLennard/after-tax-income-service-v2/helpers"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
@@ -23,7 +23,7 @@ func AfterTaxIncome(w http.ResponseWriter, req *http.Request, _ httprouter.Param
 
 	queryVals := req.URL.Query()
 
-	// income 
+	// get income 
 	incomeStr := queryVals.Get("income")
 	income, err := strconv.ParseFloat(incomeStr, 64)
 	if err != nil { 
@@ -31,7 +31,7 @@ func AfterTaxIncome(w http.ResponseWriter, req *http.Request, _ httprouter.Param
 		return
 	}
 
-	// employment status
+	// get employment status
 	selfEmpStatusStr := queryVals.Get("status")
 	selfEmpStatus, err_new := strconv.ParseBool(selfEmpStatusStr)
 	if err_new != nil{

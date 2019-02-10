@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/DylanLennard/after-tax-service-v2/service"
+	"github.com/DylanLennard/after-tax-income-service-v2/service"
 	"github.com/julienschmidt/httprouter"
 	"log"
 	"net/http"
@@ -10,9 +10,9 @@ import (
 func main() {
 	/*
 		Here's what we need to do
-		* Build unit tests
 		* deploy this via lambda
 		* set up with API gateway if need endpoint
+		* after that, rewrite to work with docker
 	*/
 	// setup the router
 	r := httprouter.New()
