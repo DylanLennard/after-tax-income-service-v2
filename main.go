@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/DylanLennard/after-tax-service-v2/service"
 	"github.com/julienschmidt/httprouter"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 	// setup the router
 	r := httprouter.New()
 
-	// assign routes 
+	// assign routes
 	r.GET("/", service.HelloWorld)
 	r.GET("/after_tax_income", service.AfterTaxIncome)
 

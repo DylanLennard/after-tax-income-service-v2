@@ -24,6 +24,7 @@ var income float64 = 50000
 var expectedStateTaxes float64 = 2107.47
 var expectedFedTaxes float64 = 6939.38
 
+
 // tests
 func TestStateTaxes(t *testing.T){
 	
