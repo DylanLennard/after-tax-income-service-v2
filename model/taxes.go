@@ -1,5 +1,6 @@
 package model
 
+import "math"
 
 type Taxes struct {
 	Brackets []float64
@@ -25,5 +26,7 @@ func (T Taxes) Calculate(income float64) float64{
 			break
 		}
 	}
+	// round to nearest two cents
+	amount = math.Round(amount*100)/100
 	return amount
 }
