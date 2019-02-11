@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/DylanLennard/after-tax-income-service-v2/service"
-	"github.com/julienschmidt/httprouter"
 	"log"
 	"net/http"
+
+	"github.com/DylanLennard/after-tax-income-service-v2/service"
+	"github.com/julienschmidt/httprouter"
 )
 
 func main() {
