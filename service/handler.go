@@ -16,6 +16,12 @@ type MyResponse struct {
 	OtherTaxesPaid   float64 `json:"OtherTaxesPaid"`
 }
 
+// This function will calculate your after tax income based on
+// the income provided and the self employment status pased as
+// query parameters to the Event
+// eventually this will be expanded to include State and there will
+// be a data store with state data in there
+// TODO: set default values for status and proper error handling
 func AfterTaxIncomeLambda(event Event) (MyResponse, error) {
 
 	income := event.Income
