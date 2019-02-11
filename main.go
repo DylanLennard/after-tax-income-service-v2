@@ -9,12 +9,7 @@ import (
 )
 
 func main() {
-	/*
-		Here's what we need to do
-		* deploy this via lambda
-		* set up with API gateway if need endpoint
-		* after that, rewrite to work with docker
-	*/
+
 	// setup the router
 	r := httprouter.New()
 
