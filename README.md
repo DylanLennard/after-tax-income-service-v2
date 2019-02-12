@@ -13,7 +13,7 @@ I wanted to take a second stab at this service, but to learn some new tools in t
 
 
 ## What Does This Do  
-Currently, the service will assume that you are in California and want your taxes for the 2018 year, and with that it will calculate your take home pay after taxes (assuming no deductions or pre-tax contributions).  
+Currently, the service will assume that you are in California and want your taxes for the 2018 year, and with that it will calculate your take home pay after taxes (assuming no deductions or pre-tax contributions). You pass the `Income` query parameter to give your pre-tax income, and you can optionally modify the `SelfEmploymentStatus` parameter if you'd like to see your rate assuming you were self-employed.  
 
 
 ## What This Does Not Do  
@@ -24,3 +24,5 @@ Replace Turbotax or HR Block.
 * Dockerize the job  
 * Reconfigure the jenkins build server to run tests and such on this code and to update the lambda   
     * Once this done, can tear down the V1 version of the service  
+* Nice to Have (but need a vacation to do): scrape tax data from appropriate sites and load it into a either a json file or a some sort of datastore. 
+    * Can then have this vary by state  
