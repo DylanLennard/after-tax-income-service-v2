@@ -1,12 +1,14 @@
 package service
 
 import (
+	"strconv"
+
 	"github.com/DylanLennard/after-tax-income-service-v2/helpers"
 )
 
 type Event struct {
-	Income               float64 `json:"Income"`
-	SelfEmploymentStatus bool    `json:"SelfEmploymentStatus"`
+	Income               string `json:"Income"`
+	SelfEmploymentStatus string `json:"SelfEmploymentStatus"`
 }
 
 type MyResponse struct {
@@ -24,8 +26,18 @@ type MyResponse struct {
 // TODO: set default values for status and proper error handling
 func AfterTaxIncomeLambda(event Event) (MyResponse, error) {
 
-	income := event.Income
-	selfEmpStatus := event.SelfEmploymentStatus
+	incomeStr := event.Income
+	selfEmpStatusStr := event.SelfEmploymentStatus
+
+	// check for errors
+	income, err := strconv.ParseFloat(incomeStr, 64)
+	if err != nil {
+		return MyResponse{}, err
+	}
+	selfEmpStatus, errEmpStatus := strconv.ParseBool(selfEmpStatusStr)
+	if errEmpStatus != nil || selfEmpStatus {
+		selfEmpStatus = true
+	}
 
 	// Get the various tax values
 	var federalTax float64 = FederalTaxes.Calculate(income)
