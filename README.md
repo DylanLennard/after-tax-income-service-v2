@@ -20,9 +20,7 @@ Currently, the service will assume that you are in California and want your taxe
 Replace Turbotax or HR Block.  
 
 
-## TODO List (as of 02/09/2019)  
-* Deploy to AWS Lambda  
-* Expose this as a public endpoint using AWS API Gateway  
+## TODO List (as of 02/11/2019)  
 * After these two complete, dockerize the job  
 * Finally, reconfigure the jenkins build server to run tests and such on this code and to update the lambda   
     * Once this done, can tear down the V1 version of the service  
