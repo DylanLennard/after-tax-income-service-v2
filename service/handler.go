@@ -36,7 +36,7 @@ func AfterTaxIncomeLambda(event Event) (MyResponse, error) {
 	}
 	selfEmpStatus, errEmpStatus := strconv.ParseBool(selfEmpStatusStr)
 	if errEmpStatus != nil || selfEmpStatus {
-		selfEmpStatus = true
+		selfEmpStatus = false
 	}
 
 	// Get the various tax values
