@@ -21,6 +21,6 @@ Replace Turbotax or HR Block.
 
 
 ## TODO List (as of 02/11/2019)  
-* After these two complete, dockerize the job  
-* Finally, reconfigure the jenkins build server to run tests and such on this code and to update the lambda   
+* Dockerize the job  
+* Reconfigure the jenkins build server to run tests and such on this code and to update the lambda   
     * Once this done, can tear down the V1 version of the service  
