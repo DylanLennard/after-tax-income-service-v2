@@ -6,11 +6,13 @@ import (
 	"github.com/DylanLennard/after-tax-income-service-v2/helpers"
 )
 
+// Event used for accepting parameters from querystring
 type Event struct {
 	Income               string `json:"Income"`
 	SelfEmploymentStatus string `json:"SelfEmploymentStatus"`
 }
 
+// MyResponse used for setting up exported JSON after handler runs
 type MyResponse struct {
 	AfterTaxIncome   float64 `json:"AfterTaxIncome"`
 	FederalTaxesPaid float64 `json:"FederalTaxesPaid"`
@@ -18,7 +20,7 @@ type MyResponse struct {
 	OtherTaxesPaid   float64 `json:"OtherTaxesPaid"`
 }
 
-// This function will calculate your after tax income based on
+// AfterTaxIncomeLambda will calculate your after tax income based on
 // the income provided and the self employment status pased as
 // query parameters to the Event
 // eventually this will be expanded to include State and there will
@@ -40,9 +42,9 @@ func AfterTaxIncomeLambda(event Event) (MyResponse, error) {
 	}
 
 	// Get the various tax values
-	var federalTax float64 = FederalTaxes.Calculate(income)
-	var stateTax float64 = StateTaxes.Calculate(income)
-	var otherTax float64 = helpers.CalculateOtherTaxes(income, selfEmpStatus)
+	federalTax := FederalTaxes.Calculate(income)
+	stateTax := StateTaxes.Calculate(income)
+	otherTax := helpers.CalculateOtherTaxes(income, selfEmpStatus)
 	afterTax := income - (federalTax + stateTax + otherTax)
 
 	// create the output struct
