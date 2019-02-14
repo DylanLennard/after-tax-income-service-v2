@@ -41,6 +41,9 @@ func AfterTaxIncomeLambda(event Event) (MyResponse, error) {
 		selfEmpStatus = false
 	}
 
+	// get the raw data for use
+	FederalTaxes, StateTaxes := helpers.GetTaxInfo()
+
 	// Get the various tax values
 	federalTax := FederalTaxes.Calculate(income)
 	stateTax := StateTaxes.Calculate(income)
