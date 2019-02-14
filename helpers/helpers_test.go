@@ -2,7 +2,7 @@ package helpers
 
 import "testing"
 
-func TestCalculateOtherTaxes(t *testing.T){
+func TestCalculateOtherTaxes(t *testing.T) {
 
 	// setup vars
 	var income float64 = 50000
