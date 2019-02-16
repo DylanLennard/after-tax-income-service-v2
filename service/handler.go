@@ -42,7 +42,7 @@ func AfterTaxIncomeLambda(event Event) (MyResponse, error) {
 	}
 
 	// get the raw data for use
-	FederalTaxes, StateTaxes := helpers.GetTaxInfo()
+	FederalTaxes, StateTaxes := helpers.GetTaxInfo("CA")
 
 	// Get the various tax values
 	federalTax := FederalTaxes.Calculate(income)
