@@ -1,6 +1,10 @@
 package helpers
 
 import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+
 	"github.com/DylanLennard/after-tax-income-service-v2/model"
 )
 
@@ -37,30 +41,28 @@ func CalculateOtherTaxes(income float64, selfEmpStatus bool) float64 {
 func GetTaxInfo() (model.Taxes, model.Taxes) {
 
 	// open the two files and unmarshal the JSON appropriately
-	// fedTaxFile, errFed := os.Open("users.json")
-	// defer fedTaxFile.close()
-	// if errFed != nil {
-	// 	fmt.Println(errFed)
-	// }
-	// stateTaxFile, errState := os.Open("users.json")
-	// defer stateTaxFile.close()
-	// if errState != nil {
-	// 	fmt.Println(errState)
-	// }
+	fedTaxFile, errFed := ioutil.ReadFile("data/FederalTaxData.json")
+	if errFed != nil {
+		fmt.Println(errFed)
+	}
+	stateTaxFile, errState := ioutil.ReadFile("data/StateTaxData.json")
+	if errState != nil {
+		fmt.Println(errState)
+	}
 
 	//unmarshal the JSON
+	var FederalTaxes model.Taxes
+	var StateTaxes model.Taxes
+	errUnMarshFed := json.Unmarshal(fedTaxFile, &FederalTaxes)
+	if errUnMarshFed != nil {
+		fmt.Println(errUnMarshFed)
+	}
+	errUnMarshState := json.Unmarshal(stateTaxFile, &StateTaxes)
+	if errUnMarshState != nil {
+		fmt.Println(errUnMarshState)
+	}
 
-	// TODO: delete this once you've gotten data from file explicitly
-	StateTaxes := model.Taxes{
-		Rates: []float64{0.01, 0.02, 0.04, 0.06, 0.08, 0.093,
-			0.103, 0.113, 0.123, 0.133},
-		Brackets: []float64{0, 8015, 19001, 29989, 41629, 52612, 268750,
-			322499, 537498, 1000000},
-	}
-	FederalTaxes := model.Taxes{
-		Rates:    []float64{0.1, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37},
-		Brackets: []float64{0, 9526, 38701, 82501, 157501, 200001, 500001},
-	}
+	fmt.Println(StateTaxes)
 
 	return FederalTaxes, StateTaxes
 
