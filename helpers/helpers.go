@@ -37,33 +37,36 @@ func CalculateOtherTaxes(income float64, selfEmpStatus bool) float64 {
 	return totalOtherTax
 }
 
+// CheckFileRead will return the bytestream resulting from reading a file
+func CheckFileRead(fname string) []byte {
+	fileStream, err := ioutil.ReadFile(fname)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return fileStream
+}
+
 // GetTaxInfo gets all the full data
-func GetTaxInfo() (model.Taxes, model.Taxes) {
+func GetTaxInfo(state string) (model.Taxes, model.Taxes) {
 
 	// open the two files and unmarshal the JSON appropriately
-	fedTaxFile, errFed := ioutil.ReadFile("data/FederalTaxData.json")
-	if errFed != nil {
-		fmt.Println(errFed)
-	}
-	stateTaxFile, errState := ioutil.ReadFile("data/StateTaxData.json")
-	if errState != nil {
-		fmt.Println(errState)
-	}
+	fedTaxFile := CheckFileRead("data/FederalTaxData.json")
+	stateTaxFile := CheckFileRead("data/StateTaxData.json")
 
-	//unmarshal the JSON
+	// declare the vars
 	var FederalTaxes model.Taxes
-	var StateTaxes model.Taxes
-	errUnMarshFed := json.Unmarshal(fedTaxFile, &FederalTaxes)
-	if errUnMarshFed != nil {
-		fmt.Println(errUnMarshFed)
+	var StateTaxes map[string]model.Taxes
+
+	// unmarshal the JSON
+	err := json.Unmarshal(fedTaxFile, &FederalTaxes)
+	if err != nil {
+		fmt.Println(err)
 	}
-	errUnMarshState := json.Unmarshal(stateTaxFile, &StateTaxes)
-	if errUnMarshState != nil {
-		fmt.Println(errUnMarshState)
+	err = json.Unmarshal(stateTaxFile, &StateTaxes)
+	if err != nil {
+		fmt.Println(err)
 	}
 
-	fmt.Println(StateTaxes)
-
-	return FederalTaxes, StateTaxes
+	return FederalTaxes, StateTaxes[state]
 
 }
