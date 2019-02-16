@@ -8,11 +8,6 @@ type Taxes struct {
 	Rates    []float64
 }
 
-// TaxData used for importing JSON of all state's data
-type TaxData struct {
-	States map[string]Taxes
-}
-
 // Calculate returns your after tax income for a given set of taxes
 func (T Taxes) Calculate(income float64) float64 {
 
