@@ -3,8 +3,8 @@ package helpers
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 
+	"github.com/DylanLennard/after-tax-income-service-v2/data"
 	"github.com/DylanLennard/after-tax-income-service-v2/model"
 )
 
@@ -37,32 +37,19 @@ func CalculateOtherTaxes(income float64, selfEmpStatus bool) float64 {
 	return totalOtherTax
 }
 
-// CheckFileRead will return the bytestream resulting from reading a file
-func CheckFileRead(fname string) []byte {
-	fileStream, err := ioutil.ReadFile(fname)
-	if err != nil {
-		fmt.Println(err)
-	}
-	return fileStream
-}
-
 // GetTaxInfo gets all the full data
 func GetTaxInfo(state string) (model.Taxes, model.Taxes) {
-
-	// open the two files and unmarshal the JSON appropriately
-	fedTaxFile := CheckFileRead("data/FederalTaxData.json")
-	stateTaxFile := CheckFileRead("data/StateTaxData.json")
 
 	// declare the vars
 	var FederalTaxes model.Taxes
 	var StateTaxes map[string]model.Taxes
 
 	// unmarshal the JSON
-	err := json.Unmarshal(fedTaxFile, &FederalTaxes)
+	err := json.Unmarshal(data.FedTaxData, &FederalTaxes)
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = json.Unmarshal(stateTaxFile, &StateTaxes)
+	err = json.Unmarshal(data.StateTaxData, &StateTaxes)
 	if err != nil {
 		fmt.Println(err)
 	}
