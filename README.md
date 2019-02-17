@@ -1,7 +1,7 @@
 # After Tax Income Service V2: This Time, It's Personal  
 
 ## Summary  
-The OG [`after tax income service`](https://github.com/DylanLennard/after-tax-income-service) was a way to make a tool that I would use regularly as well as to learn about AWS deployment tools that I was exposed to at work. The goal was to learn about docker, EC2, ECS and Jenkins. A lot of the handler python code is from a command line app I made years ago (and am embarrased by), but besides that I felt the project was a success as I accomplished what I set out to do with it.   
+The OG [`after tax income service`](https://github.com/DylanLennard/after-tax-income-service) was a way to make a tool that I would use regularly as well as to learn about AWS deployment tools that I was exposed to at work. The goal was to learn about docker, EC2, ECS and Jenkins. A lot of the handler python code is from a command line app I made years ago (and have edited a bit since), but besides that I felt the project was a success as I accomplished what I set out to do with it.   
 
 I wanted to take a second stab at this service, but to learn some new tools in the process. I also hope to do this in such a way that the code flows a little better and makes more logical sense. For example, I feel that structs with methods are a much better way of representing the type of data structure I'd like for the Tax information for state and federal than a python class.  
 
