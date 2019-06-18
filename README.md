@@ -22,6 +22,5 @@ Replace Turbotax or HR Block.
 
 ## TODO List (as of 02/11/2019) 
 * Adjust the job to return an errorcode in event that bad parameter is passed or no parameters passed   
-* Configure a jenkins build server to run tests and such on this code and to update the lambda  
 * Nice to Have (but need a vacation to do): scrape tax data from appropriate sites and load it into a either a json file or a some sort of datastore. 
     * Can then have this vary by state  
